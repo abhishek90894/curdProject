@@ -1,5 +1,6 @@
 package com.boot.Curdproject.curdProject.controllers;
 
+import com.boot.Curdproject.curdProject.dtos.ApiResponseMessage;
 import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,11 @@ public class userController {
 
     //delete
     @DeleteMapping("/{userId}")
-    public ResponseEntity<String> deleteUser(@PathVariable String userId)
+    public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId)
     {
         userService.deleteUser(userId);
-        return  new ResponseEntity<>("user is deleted successfully",HttpStatus.OK);
+  ApiResponseMessage message =  ApiResponseMessage.builder().message("user deleted succesfully").success(true).status(HttpStatus.OK).build();
+        return  new ResponseEntity<>(message,HttpStatus.OK);
     }
     //get all
     @GetMapping
