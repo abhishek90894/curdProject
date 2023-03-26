@@ -13,7 +13,7 @@ import lombok.*;
 public class user {
 
     @Id
-    
+
     private String userId;
 
     private String userName;
