@@ -2,7 +2,12 @@ package com.boot.Curdproject.curdProject.controllers;
 
 import com.boot.Curdproject.curdProject.dtos.ApiResponseMessage;
 import com.boot.Curdproject.curdProject.dtos.UserDto;
+
+
+import com.boot.Curdproject.curdProject.service.impl.userImpl;
 import com.boot.Curdproject.curdProject.service.userService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +20,8 @@ import java.util.List;
 public class userController {
     @Autowired
    private userService userService;
+    Logger logger = LoggerFactory.getLogger(userController.class);
+
     //create
     @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto)
@@ -37,7 +44,8 @@ public class userController {
     {
         userService.deleteUser(userId);
   ApiResponseMessage message =  ApiResponseMessage.builder().message("user deleted succesfully").success(true).status(HttpStatus.OK).build();
-        return  new ResponseEntity<>(message,HttpStatus.OK);
+  logger.info("user deleted {}",message);
+  return  new ResponseEntity<>(message,HttpStatus.OK);
     }
     //get all
     @GetMapping
@@ -46,23 +54,24 @@ public class userController {
         return new ResponseEntity<>(userService.getAllUser(),HttpStatus.OK);
     }
     //get single
-     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> getUser(String userid)
+     @GetMapping("/{userid}")
+    public ResponseEntity<UserDto> getUser(@PathVariable String userid)
     {
+        logger.info("user of given id {} ",userService.getUserById(userid));
         return new ResponseEntity<>(userService.getUserById(userid),HttpStatus.OK);
     }
 
     //get user by email
-    @GetMapping("email/{email}")
-    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email)
-    {
-        return new ResponseEntity<>(userService.getUserByEmail(email),HttpStatus.OK);
-    }
+//    @GetMapping("email/{email}")
+//    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email)
+//    {
+//        return new ResponseEntity<>(userService.getUserByEmail(email),HttpStatus.OK);
+//    }
 
     //search user
-    @GetMapping("/{keywords}")
-    public ResponseEntity<List<UserDto>> searchUser(@PathVariable String keywords)
-    {
-        return new ResponseEntity<>(userService.searchUser(keywords),HttpStatus.OK);
-    }
+//    @GetMapping("/{keywords}")
+//    public ResponseEntity<List<UserDto>> searchUser(@PathVariable String keywords)
+//    {
+//        return new ResponseEntity<>(userService.searchUser(keywords),HttpStatus.OK);
+//    }
 }

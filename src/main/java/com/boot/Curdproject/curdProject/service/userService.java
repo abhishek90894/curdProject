@@ -2,9 +2,11 @@ package com.boot.Curdproject.curdProject.service;
 
 import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.entities.user;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface userService {
 
     //create
@@ -24,8 +26,8 @@ public interface userService {
      // get single user by id
      UserDto getUserById(String userid);
 
-     UserDto getUserByEmail(String email);
+//     UserDto getUserByEmail(String email);
     //search user
-    List<UserDto> searchUser(String keyword);
+//    List<UserDto> searchUser(String keyword);
 
 }

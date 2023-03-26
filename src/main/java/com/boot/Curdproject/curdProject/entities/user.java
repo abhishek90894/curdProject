@@ -17,7 +17,7 @@ public class user {
     private String userId;
 
     private String userName;
-    @Column(unique = true)
+    //@Column(unique = true)
     private String Email;
     private String Password;
     private String gender;

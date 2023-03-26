@@ -6,11 +6,13 @@ import com.boot.Curdproject.curdProject.service.userService;
 import com.boot.Curdproject.curdProject.repository.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class userImpl  implements userService {
 
     @Autowired
@@ -64,18 +66,18 @@ public class userImpl  implements userService {
 
     }
 
-    @Override
-    public UserDto getUserByEmail(String email) {
-        user user = userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("user not  found"));
-        return entityToDto(user);
-    }
+//    @Override
+//    public UserDto getUserByEmail(String email) {
+//        user user = userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("user not  found"));
+//        return entityToDto(user);
+//    }
 
-    @Override
-    public List<UserDto> searchUser(String keyword) {
-        List<user> user = userRepository.findByNameContaining(keyword);
-        List<UserDto> dtoList = user.stream().map(user1 ->entityToDto(user1)).collect(Collectors.toList());
-        return dtoList;
-    }
+//    @Override
+//    public List<UserDto> searchUser(String keyword) {
+//        List<user> user = userRepository.findByNameContaining(keyword);
+//        List<UserDto> dtoList = user.stream().map(user1 ->entityToDto(user1)).collect(Collectors.toList());
+//        return dtoList;
+//    }
 
     private user dtoToEntity(UserDto userDto) {
 //    user user1 = user.builder()
