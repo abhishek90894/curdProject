@@ -31,7 +31,7 @@ public class userImpl  implements userService {
     public UserDto updateUser(UserDto userDto, String userId) {
         user user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("userNot found"));
              user.setUserName(userDto.getUserName());
-             user.setUserPassword(userDto.getUserPassword());
+             user.setPassword(userDto.getPassword());
              user.setAbout(userDto.getGender());
              user.setImageName(userDto.getImageName());
              user updateUser = userRepository.save(user);
@@ -58,7 +58,7 @@ public class userImpl  implements userService {
     public UserDto getUserById(String userid) {
           user user   =   userRepository.findById(userid).orElseThrow(()->new RuntimeException("user not found"));
          return  entityToDto(user);
-          
+
     }
 
     @Override
@@ -75,8 +75,8 @@ public class userImpl  implements userService {
     user user1 = user.builder()
             .userId(userDto.getUserId())
             .userName(userDto.getUserName())
-            .userEmail(userDto.getUserEmail())
-            .userPassword(userDto.getUserPassword())
+            .Email(userDto.getEmail())
+            .Password(userDto.getPassword())
             .about(userDto.getAbout())
             .imageName(userDto.getImageName())
             .gender(userDto.getGender()).build();
@@ -88,8 +88,8 @@ public class userImpl  implements userService {
       UserDto userDto = UserDto.builder()
               .userId(saveUser.getUserId())
               .userName(saveUser.getUserName())
-              .userEmail(saveUser.getUserEmail())
-              .userPassword(saveUser.getUserPassword())
+              .Email(saveUser.getEmail())
+              .userPassword(saveUser.getPassword())
               .about(saveUser.getAbout())
               .imageName(saveUser.getImageName())
               .build();

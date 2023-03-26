@@ -18,8 +18,8 @@ public class user {
 
     private String userName;
     @Column(unique = true)
-    private String userEmail;
-    private String userPassword;
+    private String Email;
+    private String Password;
     private String gender;
     @Column(length =100)
     private String about;
