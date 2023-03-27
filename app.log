@@ -26,6 +26,7 @@
 2023-03-27T01:15:24.468+05:30  INFO 3836 --- [http-nio-9999-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2023-03-27T01:15:24.482+05:30  INFO 3836 --- [http-nio-9999-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
 2023-03-27T01:15:24.892+05:30  INFO 3836 --- [http-nio-9999-exec-2] c.b.C.c.controllers.userController       : user of given id UserDto(userId=e8b806d5-213e-4655-9641-bdd2d2997dc2, userName=abhishek srivastava, Email=abhishek@gmail.com, Password=abcd, gender=male, about=male, imageName=abhi.png) 
+<<<<<<< HEAD
 2023-03-27T01:18:37.188+05:30  INFO 3836 --- [http-nio-9999-exec-5] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
  Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
 
@@ -59,3 +60,5 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 2023-03-27T01:23:31.779+05:30  INFO 3836 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-03-27T01:23:31.785+05:30  INFO 3836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-03-27T01:23:31.795+05:30  INFO 3836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+=======
+>>>>>>> project
