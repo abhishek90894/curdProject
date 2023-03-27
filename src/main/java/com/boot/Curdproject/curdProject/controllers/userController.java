@@ -2,9 +2,6 @@ package com.boot.Curdproject.curdProject.controllers;
 
 import com.boot.Curdproject.curdProject.dtos.ApiResponseMessage;
 import com.boot.Curdproject.curdProject.dtos.UserDto;
-
-
-import com.boot.Curdproject.curdProject.service.impl.userImpl;
 import com.boot.Curdproject.curdProject.service.userService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,46 +16,48 @@ import java.util.List;
 @RequestMapping("/users")
 public class userController {
     @Autowired
-   private userService userService;
+    private userService userService;
     Logger logger = LoggerFactory.getLogger(userController.class);
 
-    //create
+    /**createUser -
+     *
+     * @param userDto
+     * @return
+     */
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto)
-    {
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
         UserDto userDto1 = userService.createUser(userDto);
 
-        return  new ResponseEntity<>(userDto1, HttpStatus.CREATED);
+        return new ResponseEntity<>(userDto1, HttpStatus.CREATED);
     }
+
     //update
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") String userId,@RequestBody UserDto userDto)
-    {
-        UserDto userDto1 = userService.updateUser(userDto,userId);
-        return  new ResponseEntity<>(userDto1,HttpStatus.OK);
+    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") String userId, @RequestBody UserDto userDto) {
+        UserDto userDto1 = userService.updateUser(userDto, userId);
+        return new ResponseEntity<>(userDto1, HttpStatus.OK);
     }
 
     //delete
     @DeleteMapping("/{userId}")
-    public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId)
-    {
+    public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId) {
         userService.deleteUser(userId);
-  ApiResponseMessage message =  ApiResponseMessage.builder().message("user deleted succesfully").success(true).status(HttpStatus.OK).build();
-  logger.info("user deleted {}",message);
-  return  new ResponseEntity<>(message,HttpStatus.OK);
+        ApiResponseMessage message = ApiResponseMessage.builder().message("user deleted succesfully").success(true).status(HttpStatus.OK).build();
+        logger.info("user deleted {}", message);
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
     //get all
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUsers()
-    {
-        return new ResponseEntity<>(userService.getAllUser(),HttpStatus.OK);
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
     }
+
     //get single
-     @GetMapping("/{userid}")
-    public ResponseEntity<UserDto> getUser(@PathVariable String userid)
-    {
-        logger.info("user of given id {} ",userService.getUserById(userid));
-        return new ResponseEntity<>(userService.getUserById(userid),HttpStatus.OK);
+    @GetMapping("/{userid}")
+    public ResponseEntity<UserDto> getUser(@PathVariable String userid) {
+        logger.info("user of given id {} ", userService.getUserById(userid));
+        return new ResponseEntity<>(userService.getUserById(userid), HttpStatus.OK);
     }
 
     //get user by email

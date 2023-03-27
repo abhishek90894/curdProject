@@ -1,15 +1,14 @@
 package com.boot.Curdproject.curdProject.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 public class UserDto {
 
 
