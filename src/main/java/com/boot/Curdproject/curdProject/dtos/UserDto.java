@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class UserDto {
    @Size(min = 3,max = 15 , message = "Invalid name")
     private String userName;
     @Email(message = "Invalid email")
+// @Pattern(regexp = "\\A[A-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Z0-9.-]+\\Z",message = "Invalid user Email !!")
     private String Email;
     @NotBlank(message = "password is required")
     private String Password;
