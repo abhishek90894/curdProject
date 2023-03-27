@@ -6,6 +6,7 @@ import com.boot.Curdproject.curdProject.dtos.UserDto;
 
 import com.boot.Curdproject.curdProject.service.impl.userImpl;
 import com.boot.Curdproject.curdProject.service.userService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class userController {
 
     //create
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto)
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto userDto)
     {
         UserDto userDto1 = userService.createUser(userDto);
 
@@ -32,7 +33,7 @@ public class userController {
     }
     //update
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") String userId,@RequestBody UserDto userDto)
+    public ResponseEntity<UserDto> updateUser(@PathVariable("userId") String userId,@RequestBody @Valid UserDto userDto)
     {
         UserDto userDto1 = userService.updateUser(userDto,userId);
         return  new ResponseEntity<>(userDto1,HttpStatus.OK);

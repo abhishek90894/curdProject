@@ -1,28 +1,28 @@
-2023-03-27T01:15:14.979+05:30  INFO 3836 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Starting CurdProjectApplication using Java 17.0.6 with PID 3836 (D:\curdProject\target\classes started by NeoSOFT in D:\curdProject)
-2023-03-27T01:15:14.993+05:30  INFO 3836 --- [restartedMain] c.b.C.c.CurdProjectApplication           : No active profile set, falling back to 1 default profile: "default"
-2023-03-27T01:15:15.073+05:30  INFO 3836 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-03-27T01:15:15.075+05:30  INFO 3836 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-03-27T01:15:16.021+05:30  INFO 3836 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-03-27T01:15:16.090+05:30  INFO 3836 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interfaces.
-2023-03-27T01:15:17.153+05:30  INFO 3836 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
-2023-03-27T01:15:17.166+05:30  INFO 3836 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-03-27T01:15:17.168+05:30  INFO 3836 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
-2023-03-27T01:15:17.252+05:30  INFO 3836 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-03-27T01:15:17.252+05:30  INFO 3836 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2164 ms
-2023-03-27T01:15:17.504+05:30  INFO 3836 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-03-27T01:15:17.557+05:30  INFO 3836 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
-2023-03-27T01:15:17.882+05:30  INFO 3836 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-03-27T01:15:17.886+05:30  WARN 3836 --- [restartedMain] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-2023-03-27T01:15:18.257+05:30  INFO 3836 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a3f5ea2
-2023-03-27T01:15:18.261+05:30  INFO 3836 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-03-27T01:15:18.329+05:30  INFO 3836 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-2023-03-27T01:15:19.262+05:30  INFO 3836 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-03-27T01:15:19.274+05:30  INFO 3836 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-03-27T01:15:19.680+05:30  WARN 3836 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-03-27T01:15:20.061+05:30  INFO 3836 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-03-27T01:15:20.110+05:30  INFO 3836 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
-2023-03-27T01:15:20.123+05:30  INFO 3836 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Started CurdProjectApplication in 5.64 seconds (process running for 6.25)
-2023-03-27T01:15:24.467+05:30  INFO 3836 --- [http-nio-9999-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-03-27T01:15:24.468+05:30  INFO 3836 --- [http-nio-9999-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-03-27T01:15:24.482+05:30  INFO 3836 --- [http-nio-9999-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
-2023-03-27T01:15:24.892+05:30  INFO 3836 --- [http-nio-9999-exec-2] c.b.C.c.controllers.userController       : user of given id UserDto(userId=e8b806d5-213e-4655-9641-bdd2d2997dc2, userName=abhishek srivastava, Email=abhishek@gmail.com, Password=abcd, gender=male, about=male, imageName=abhi.png) 
+2023-03-28T01:15:40.341+05:30  INFO 6464 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Starting CurdProjectApplication using Java 17.0.6 with PID 6464 (D:\curdProject\target\classes started by NeoSOFT in D:\curdProject)
+2023-03-28T01:15:40.361+05:30  INFO 6464 --- [restartedMain] c.b.C.c.CurdProjectApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-03-28T01:15:40.477+05:30  INFO 6464 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-28T01:15:40.477+05:30  INFO 6464 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-28T01:15:41.310+05:30  INFO 6464 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-28T01:15:41.386+05:30  INFO 6464 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interfaces.
+2023-03-28T01:15:42.155+05:30  INFO 6464 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2023-03-28T01:15:42.167+05:30  INFO 6464 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-28T01:15:42.168+05:30  INFO 6464 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-03-28T01:15:42.261+05:30  INFO 6464 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-28T01:15:42.262+05:30  INFO 6464 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1782 ms
+2023-03-28T01:15:42.509+05:30  INFO 6464 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-28T01:15:42.568+05:30  INFO 6464 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-03-28T01:15:42.860+05:30  INFO 6464 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-28T01:15:42.865+05:30  WARN 6464 --- [restartedMain] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-03-28T01:15:43.186+05:30  INFO 6464 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23c073f9
+2023-03-28T01:15:43.189+05:30  INFO 6464 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-28T01:15:43.253+05:30  INFO 6464 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-03-28T01:15:44.017+05:30  INFO 6464 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-28T01:15:44.025+05:30  INFO 6464 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-28T01:15:44.432+05:30  WARN 6464 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-28T01:15:44.805+05:30  INFO 6464 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-28T01:15:44.848+05:30  INFO 6464 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2023-03-28T01:15:44.858+05:30  INFO 6464 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Started CurdProjectApplication in 5.026 seconds (process running for 5.718)
+2023-03-28T01:16:17.218+05:30  INFO 6464 --- [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-28T01:16:17.219+05:30  INFO 6464 --- [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-28T01:16:17.223+05:30  INFO 6464 --- [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2023-03-28T01:16:17.717+05:30  WARN 6464 --- [http-nio-9999-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.boot.Curdproject.curdProject.dtos.UserDto> com.boot.Curdproject.curdProject.controllers.userController.createUser(com.boot.Curdproject.curdProject.dtos.UserDto): [Field error in object 'userDto' on field 'userName': rejected value [a]; codes [Size.userDto.userName,Size.userName,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.userName,userName]; arguments []; default message [userName],15,3]; default message [Invalid name]] ]
