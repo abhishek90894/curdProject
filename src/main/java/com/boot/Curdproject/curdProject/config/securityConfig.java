@@ -1,9 +1,7 @@
 package com.boot.Curdproject.curdProject.config;
 
-import com.boot.Curdproject.curdProject.entities.user;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.jaas.memory.InMemoryConfiguration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
