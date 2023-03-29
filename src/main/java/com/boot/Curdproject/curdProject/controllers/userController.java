@@ -2,6 +2,8 @@ package com.boot.Curdproject.curdProject.controllers;
 
 import com.boot.Curdproject.curdProject.dtos.ApiResponseMessage;
 import com.boot.Curdproject.curdProject.dtos.UserDto;
+
+
 import com.boot.Curdproject.curdProject.service.userService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,11 +21,7 @@ public class userController {
     private userService userService;
     Logger logger = LoggerFactory.getLogger(userController.class);
 
-    /**createUser -
-     *
-     * @param userDto
-     * @return
-     */
+    //create
     @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
         UserDto userDto1 = userService.createUser(userDto);

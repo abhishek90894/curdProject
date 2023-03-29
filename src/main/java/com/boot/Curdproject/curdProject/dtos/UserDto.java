@@ -1,14 +1,14 @@
 package com.boot.Curdproject.curdProject.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
+import lombok.*;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class UserDto {
 
 
