@@ -10,10 +10,7 @@ public class projectConfig {
     @Bean
     public ModelMapper mapper()
     {
-<<<<<<< HEAD
 
-=======
->>>>>>> project
         return new ModelMapper();
     }
 }
