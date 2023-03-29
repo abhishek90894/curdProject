@@ -62,3 +62,21 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 2023-03-27T01:23:31.795+05:30  INFO 3836 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 =======
 >>>>>>> project
+2023-03-29T17:58:18.931+05:30  INFO 1056 --- [main] c.b.C.c.CurdProjectApplicationTests      : Starting CurdProjectApplicationTests using Java 17.0.6 with PID 1056 (started by NeoSOFT in D:\curdProject)
+2023-03-29T17:58:18.933+05:30  INFO 1056 --- [main] c.b.C.c.CurdProjectApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2023-03-29T17:58:19.757+05:30  INFO 1056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-29T17:58:19.845+05:30  INFO 1056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 1 JPA repository interfaces.
+2023-03-29T17:58:20.379+05:30  INFO 1056 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-29T17:58:20.437+05:30  INFO 1056 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-03-29T17:58:20.775+05:30  INFO 1056 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-29T17:58:20.778+05:30  WARN 1056 --- [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-03-29T17:58:21.083+05:30  INFO 1056 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28cb86b2
+2023-03-29T17:58:21.087+05:30  INFO 1056 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-29T17:58:21.145+05:30  INFO 1056 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-03-29T17:58:21.952+05:30  INFO 1056 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-29T17:58:21.962+05:30  INFO 1056 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-29T17:58:22.357+05:30  WARN 1056 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-29T17:58:22.719+05:30  INFO 1056 --- [main] c.b.C.c.CurdProjectApplicationTests      : Started CurdProjectApplicationTests in 4.077 seconds (process running for 5.015)
+2023-03-29T17:58:22.958+05:30  INFO 1056 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-29T17:58:22.962+05:30  INFO 1056 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-03-29T17:58:22.978+05:30  INFO 1056 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
