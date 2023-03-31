@@ -61,11 +61,11 @@ public class userController {
     }
 
     //get user by email
-//    @GetMapping("email/{email}")
-//    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email)
-//    {
-//        return new ResponseEntity<>(userService.getUserByEmail(email),HttpStatus.OK);
-//    }
+    @GetMapping("email/{email}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email)
+    {
+         return new ResponseEntity<>(userService.getUserByEmail(email),HttpStatus.OK);
+    }
 
     //search user
 //    @GetMapping("/{keywords}")

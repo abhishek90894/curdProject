@@ -18,12 +18,11 @@ import lombok.NoArgsConstructor;
 public class user  {
 
     @Id
-
     private String userId;
 
     private String userName;
     //@Column(unique = true)
-    private String Email;
+    private String userEmail;
     private String Password;
     private String gender;
     @Column(length =100)
