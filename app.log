@@ -65,3 +65,118 @@ Identify and stop the process that's listening on port 9999 or configure this ap
 2023-03-30T12:58:49.470+05:30  INFO 8036 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
 2023-03-30T12:58:49.483+05:30  INFO 8036 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Started CurdProjectApplication in 5.652 seconds (process running for 6.245)
 2023-03-30T14:16:10.949+05:30  WARN 8036 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56m22s883ms357µs200ns).
+2023-03-31T18:15:38.750+05:30  INFO 4540 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Starting CurdProjectApplication using Java 17.0.6 with PID 4540 (D:\curdProject\target\classes started by NeoSOFT in D:\curdProject)
+2023-03-31T18:15:38.756+05:30  INFO 4540 --- [restartedMain] c.b.C.c.CurdProjectApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-03-31T18:15:38.826+05:30  INFO 4540 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-31T18:15:38.826+05:30  INFO 4540 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-31T18:15:39.558+05:30  INFO 4540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-31T18:15:39.628+05:30  INFO 4540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interfaces.
+2023-03-31T18:15:40.413+05:30  INFO 4540 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2023-03-31T18:15:40.423+05:30  INFO 4540 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-31T18:15:40.424+05:30  INFO 4540 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-03-31T18:15:40.528+05:30  INFO 4540 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-31T18:15:40.529+05:30  INFO 4540 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1701 ms
+2023-03-31T18:15:40.724+05:30  INFO 4540 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-31T18:15:40.773+05:30  INFO 4540 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-03-31T18:15:41.031+05:30  INFO 4540 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-31T18:15:41.330+05:30  INFO 4540 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@57c267e8
+2023-03-31T18:15:41.332+05:30  INFO 4540 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-31T18:15:41.389+05:30  INFO 4540 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-03-31T18:15:42.196+05:30  INFO 4540 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-31T18:15:42.205+05:30  INFO 4540 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-31T18:15:42.514+05:30  WARN 4540 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-31T18:15:42.834+05:30  INFO 4540 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-31T18:15:42.866+05:30  INFO 4540 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2023-03-31T18:15:42.878+05:30  INFO 4540 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Started CurdProjectApplication in 4.574 seconds (process running for 5.202)
+2023-03-31T18:17:16.954+05:30  INFO 4540 --- [http-nio-7777-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-31T18:17:16.956+05:30  INFO 4540 --- [http-nio-7777-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-31T18:17:16.959+05:30  INFO 4540 --- [http-nio-7777-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2023-03-31T18:17:45.893+05:30  INFO 4540 --- [http-nio-7777-exec-4] c.b.C.c.controllers.userController       : user of given id UserDto(userId=752da0da-85cd-4ecb-8a08-826de1cea959, userName=tanuja, Email=ankita@gmail.com, Password=1234567, gender=male, about=i am developer, imageName=abhi.png) 
+2023-03-31T18:20:36.568+05:30  INFO 4540 --- [http-nio-7777-exec-1] c.b.C.c.controllers.userController       : user of given id UserDto(userId=752da0da-85cd-4ecb-8a08-826de1cea959, userName=tanuja, Email=ankita@gmail.com, Password=1234567, gender=male, about=i am developer, imageName=abhi.png) 
+2023-03-31T18:21:11.068+05:30 ERROR 4540 --- [http-nio-7777-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: user not found] with root cause
+
+java.lang.RuntimeException: user not found
+	at com.boot.Curdproject.curdProject.service.impl.userImpl.lambda$getUserById$3(userImpl.java:64) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at com.boot.Curdproject.curdProject.service.impl.userImpl.getUserById(userImpl.java:64) ~[classes/:na]
+	at com.boot.Curdproject.curdProject.controllers.userController.getUser(userController.java:70) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:537) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:631) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2023-03-31T18:23:21.015+05:30  INFO 4540 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-31T18:23:21.019+05:30  INFO 4540 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-03-31T18:23:21.024+05:30  INFO 4540 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-03-31T18:23:24.694+05:30  INFO 1512 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Starting CurdProjectApplication using Java 17.0.6 with PID 1512 (D:\curdProject\target\classes started by NeoSOFT in D:\curdProject)
+2023-03-31T18:23:24.702+05:30  INFO 1512 --- [restartedMain] c.b.C.c.CurdProjectApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-03-31T18:23:24.764+05:30  INFO 1512 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-31T18:23:24.764+05:30  INFO 1512 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-31T18:23:25.557+05:30  INFO 1512 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-31T18:23:25.645+05:30  INFO 1512 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 1 JPA repository interfaces.
+2023-03-31T18:23:26.538+05:30  INFO 1512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2023-03-31T18:23:26.550+05:30  INFO 1512 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-31T18:23:26.550+05:30  INFO 1512 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-03-31T18:23:26.628+05:30  INFO 1512 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-31T18:23:26.628+05:30  INFO 1512 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1863 ms
+2023-03-31T18:23:26.834+05:30  INFO 1512 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-31T18:23:26.882+05:30  INFO 1512 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-03-31T18:23:27.183+05:30  INFO 1512 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-31T18:23:27.495+05:30  INFO 1512 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@593ddc12
+2023-03-31T18:23:27.498+05:30  INFO 1512 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-31T18:23:27.557+05:30  INFO 1512 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-03-31T18:23:28.413+05:30  INFO 1512 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-31T18:23:28.420+05:30  INFO 1512 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-31T18:23:28.747+05:30  WARN 1512 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-31T18:23:29.074+05:30  INFO 1512 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-31T18:23:29.105+05:30  INFO 1512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2023-03-31T18:23:29.138+05:30  INFO 1512 --- [restartedMain] c.b.C.c.CurdProjectApplication           : Started CurdProjectApplication in 4.895 seconds (process running for 5.527)
+2023-03-31T18:23:45.333+05:30  INFO 1512 --- [http-nio-7777-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-31T18:23:45.334+05:30  INFO 1512 --- [http-nio-7777-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-31T18:23:45.337+05:30  INFO 1512 --- [http-nio-7777-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
