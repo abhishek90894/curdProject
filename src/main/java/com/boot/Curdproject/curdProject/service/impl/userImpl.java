@@ -69,11 +69,11 @@ public class userImpl  implements userService {
 
     }
 
-     @Override
-     public UserDto getUserByEmail(String email) {
-        user user = userRepository.findByuserEmail(email);
-        return entityToDto(user);
-    }
+//     @Override
+//     public UserDto getUserByEmail(String email) {
+//        user user = userRepository.findByuserEmail(email);
+//        return entityToDto(user);
+//    }
 
 //    @Override
 //    public List<UserDto> searchUser(String keyword) {

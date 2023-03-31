@@ -24,7 +24,7 @@ public class user  {
     private String userName;
     //@Column(unique = true)
     @Email
-    private String userEmail;
+    private String Email;
     @Max(value = 12)
     @Min(value = 6)
     private String Password;
