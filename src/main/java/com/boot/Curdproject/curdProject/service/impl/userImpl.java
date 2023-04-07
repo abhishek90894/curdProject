@@ -2,8 +2,9 @@ package com.boot.Curdproject.curdProject.service.impl;
 
 import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.entities.user;
+import com.boot.Curdproject.curdProject.exception.ResourceNotFoundException;
+import com.boot.Curdproject.curdProject.repository.userRepository;
 import com.boot.Curdproject.curdProject.service.userService;
-import com.boot.Curdproject.curdProject.repository.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,10 +20,12 @@ public class userImpl  implements userService {
     private  userRepository userRepository;
     @Autowired
     private ModelMapper mapper;
+
     @Override
     public UserDto createUser(UserDto userDto) {
         String userId = UUID.randomUUID().toString();
          userDto.setUserId(userId);
+
         user user = dtoToEntity(userDto);
         user saveUser = userRepository.save(user);
          UserDto newDto = entityToDto(saveUser);
@@ -48,7 +51,7 @@ public class userImpl  implements userService {
     @Override
     public void deleteUser(String userId)
     {
-        user user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("user not found"));
+        user user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("user not found"));
       userRepository.delete(user);
     }
 
@@ -61,14 +64,14 @@ public class userImpl  implements userService {
 
     @Override
     public UserDto getUserById(String userid) {
-          user user   =   userRepository.findById(userid).orElseThrow(()->new RuntimeException("user not found"));
+          user user   =   userRepository.findById(userid).orElseThrow(()->new ResourceNotFoundException("user not found"));
          return  entityToDto(user);
 
     }
 
-//    @Override
-//    public UserDto getUserByEmail(String email) {
-//        user user = userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("user not  found"));
+//     @Override
+//     public UserDto getUserByEmail(String email) {
+//        user user = userRepository.findByuserEmail(email);
 //        return entityToDto(user);
 //    }
 
