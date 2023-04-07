@@ -1,8 +1,12 @@
 package com.boot.Curdproject.curdProject.dtos;
 
+<<<<<<< HEAD
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+=======
+
+>>>>>>> 55008cc44612a6bde33ed6d61464ce120bf0bb0a
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
