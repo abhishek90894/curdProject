@@ -26,11 +26,11 @@ public class user  {
 
     private String Email;
 
+
     private String Password;
 
     private String gender;
 
-    @Column(length =100)
     private String about;
 
     private String imageName;
