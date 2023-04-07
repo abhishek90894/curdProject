@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Setter
@@ -29,4 +30,5 @@ public class UserDto {
     private String about;
 
     private String imageName;
+
 }

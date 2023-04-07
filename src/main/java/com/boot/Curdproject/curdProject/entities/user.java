@@ -20,21 +20,19 @@ public class user  {
 
     @Id
     private String userId;
-    @NotNull
+
     private String userName;
     //@Column(unique = true)
-    @Email
+
     private String Email;
-    @Max(value = 12)
-    @Min(value = 6)
+
+
     private String Password;
-    @Min(4)
-    @Max(10)
+
     private String gender;
-    @NotBlank
-    @Column(length =100)
+
     private String about;
-    @NotNull
+
     private String imageName;
 
 }
