@@ -70,10 +70,10 @@ public class userServiceTest {
     public void updateUserTest() {
         String userId = "12dse45";
         UserDto userDto = UserDto.builder()
-                .userName("abhishek")
+                .userName("abhishek srivastava")
 
                 .Email("abhi@gmail.com")
-                .about("this is testing")
+                .about("this")
                 .gender("male")
                 .imageName("abhi.jpeg")
                 .Password("1234567")
@@ -96,7 +96,6 @@ public class userServiceTest {
         when(userRepository.findById("abc123")).thenReturn(Optional.of(user1));
         userService.deleteUser(userId);
         Mockito.verify(userRepository, Mockito.times(1)).delete(user1);
-
 
     }
 

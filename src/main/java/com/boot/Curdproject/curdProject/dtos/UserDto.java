@@ -16,7 +16,7 @@ public class UserDto {
 
 
     private String userId;
-   @Size(min = 3,max = 15 , message = "Invalid name")
+   @Size(min = 3,max = 100 , message = "Invalid name")
     private String userName;
     @Email(message = "Invalid email")
 // @Pattern(regexp = "\\A[A-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Z0-9.-]+\\Z",message = "Invalid user Email !!")
