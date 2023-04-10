@@ -5,6 +5,7 @@ import com.boot.Curdproject.curdProject.entities.user;
 import com.boot.Curdproject.curdProject.service.userService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.catalina.User;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,9 +15,17 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -57,14 +66,25 @@ public class userControllerTest {
 
         // actual request for url
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/users")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(convertObjectToJsonString(user1))
-                        .accept(MediaType.APPLICATION_JSON))
+//        this.mockMvc.perform(MockMvcRequestBuilders.post("/users")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(convertObjectToJsonString(user1))
+//                        .accept(MediaType.APPLICATION_JSON))
+//
+//                        .andDo(print())
+//                        .andExpect(status().isCreated())
+//                        .andExpect(jsonPath("$.userName").exists());
 
-                        .andDo(print())
-                        .andExpect(status().isCreated())
-                        .andExpect(jsonPath("$.userName").exists());
+
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/users")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(convertObjectToJsonString(user1));
+
+        ResultActions perform = mockMvc.perform(requestBuilder);
+        MvcResult  andReturn = perform.andReturn();
+        MockHttpServletResponse response = andReturn.getResponse();
+        int status = response.getStatus();
+        Assertions.assertEquals(201,status);
 
     }
       @Test
@@ -85,6 +105,32 @@ public class userControllerTest {
                   .andExpect(jsonPath("$.userName").exists());
 
       }
+        @Test
+        public void getAllUsersTest() throws Exception
+        {
+          UserDto  userDto1 = UserDto.builder().userName("abhishek srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
+            UserDto  userDto2 = UserDto.builder().userName("abhinav srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
+
+            List<UserDto> userDtos  = List.of(userDto1,userDto2);
+            UserDto userDto = mapper.map(user1,UserDto.class);
+            when(userService.getAllUser()).thenReturn(userDtos);
+
+//            this.mockMvc.perform(MockMvcRequestBuilders.get("/users")
+//                            .contentType(MediaType.APPLICATION_JSON)
+//
+//                            .accept(MediaType.APPLICATION_JSON))
+//                    .andDo(print())
+//                    .andExpect(status().isOk());
+
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.get("/users"); // use to create request
+           ResultActions perform =  mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
+            MvcResult mvcResult = perform.andReturn();
+            MockHttpServletResponse response = mvcResult.getResponse();
+            int status = response.getStatus();
+            Assertions.assertEquals(200,status);
+
+
+        }
 
     private String convertObjectToJsonString(Object user1) {
 
