@@ -2,6 +2,7 @@ package com.boot.Curdproject.curdProject.services;
 
 import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.entities.user;
+import com.boot.Curdproject.curdProject.exception.ResourceNotFoundException;
 import com.boot.Curdproject.curdProject.repository.userRepository;
 import com.boot.Curdproject.curdProject.service.userService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 //@ExtendWith(SpringExtension.class)
 @Slf4j
@@ -79,7 +81,7 @@ public class userServiceTest {
                 .Password("1234567")
                 .build();
 
-        when(userRepository.findById(Mockito.anyString())).thenReturn(Optional.of(user1));
+        when(userRepository.findById(anyString())).thenReturn(Optional.of(user1));
         when(userRepository.save(Mockito.any())).thenReturn(user1);
         UserDto userDto1 = userService.updateUser(userDto, userId);
 
@@ -89,13 +91,71 @@ public class userServiceTest {
 
     }
 
+//    @Test
+//    public void updateUserTest_userNotfound()
+//    {
+//        String userId = "12dse45";
+//        UserDto userDto = UserDto.builder()
+//                .userName("abhishek srivastava")
+//
+//                .Email("abhi@gmail.com")
+//                .about("this")
+//                .gender("male")
+//                .imageName("abhi.jpeg")
+//                .Password("1234567")
+//                .build();
+//
+//        when(userRepository.findById(anyString())).thenReturn(Optional.empty());
+//        try {
+//            userService.getUserById(userId);
+//            Assertions.fail("Expected ResourceNotFoundException to be thrown");
+//        } catch (RuntimeException e) {
+//            // Assert
+//            Assertions.assertEquals("user not found", e.getMessage());
+//        }
+//
+//    }
+
+    @Test
+    void testUpdateUserWhenUserNotFound() {
+        // given
+        String userId = "1";
+        UserDto userDto = UserDto.builder()
+                .userName("abhishek srivastava")
+
+                .Email("abhi@gmail.com")
+                .about("this")
+                .gender("male")
+                .imageName("abhi.jpeg")
+                .Password("1234567")
+                .build();
+        when(userRepository.findById(userId)).thenReturn(Optional.empty());
+
+        // when + then
+        Assertions.assertThrows(RuntimeException.class, () -> userService.updateUser(userDto, userId));
+        verify(userRepository, times(1)).findById(userId);
+        verify(userRepository, never()).save(any());
+    }
+
+
     // delete user test case
     @Test
     public void deleteUserTest() {
         String userId = "abc123";
         when(userRepository.findById("abc123")).thenReturn(Optional.of(user1));
         userService.deleteUser(userId);
-        Mockito.verify(userRepository, Mockito.times(1)).delete(user1);
+        verify(userRepository, times(1)).delete(user1);
+
+    }
+    @Test
+    public void deleteUserTest_userNotFound()
+    {
+      String  userId = "abhc";
+        when(userRepository.findById(anyString())).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(RuntimeException.class, () -> userService.deleteUser(userId));
+        verify(userRepository, times(1)).findById(userId);
+        verify(userRepository, never()).delete(any());
 
     }
 
@@ -131,7 +191,7 @@ public class userServiceTest {
     }
 
     @Test
-    public void getUserByIdTest() {
+    public void getUserByIdTest01() {
 
         String userid = "abc123";
         when(userRepository.findById("abc123")).thenReturn(Optional.of(user1));
@@ -140,6 +200,24 @@ public class userServiceTest {
         Assertions.assertEquals(user1.getUserName(), userDto.getUserName(), "invalid user name");
         Assertions.assertEquals(user1.getEmail(), userDto.getEmail(), "invalid user email");
     }
+
+
+    @Test
+    public void testGetUserById_UserNotFound() {
+        // Arrange
+        when(userRepository.findById(anyString())).thenReturn(Optional.empty());
+
+        // Act
+        try {
+            userService.getUserById("user1");
+            Assertions.fail("Expected ResourceNotFoundException to be thrown");
+        } catch (ResourceNotFoundException e) {
+            // Assert
+            Assertions.assertEquals("user not found", e.getMessage());
+        }
+    }
+
+
 
 //    @Test
 //    public void getUserByEmailTest()

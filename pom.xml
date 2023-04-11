@@ -137,8 +137,12 @@
 						<exclude>**/MerchantFileOperations*</exclude>
 						<exclude>**/configuration/**</exclude>
 						<exclude>**/*Application*</exclude>
-						<exclude>**/dto/**/*</exclude>
-						<exclude>**/com/boot/Curdproject/curdProject/entities/user.class</exclude>
+
+						<exclude>**/com/boot/Curdproject/curdProject/entities/**</exclude>
+						<exclude>**/com/boot/Curdproject/curdProject/exception/**</exclude>
+						<exclude>**/com/boot/Curdproject/curdProject/validate/**</exclude>
+						<exclude>*/com/boot/Curdproject/curdProject/config/**</exclude>
+						<exclude>*/com/boot/Curdproject/curdProject/dtos/**</exclude>
 
 					</excludes>
 				</configuration>

@@ -131,7 +131,46 @@ public class userControllerTest {
 
 
         }
+        @Test
+        public void deleteUserTest() throws Exception
+        {
+            String userId = "abc12345678";
+            userService.deleteUser(userId);
 
+            MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.delete("/users/"+userId); // use to create request
+            ResultActions perform =  mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
+            MvcResult mvcResult = perform.andReturn();
+            MockHttpServletResponse response = mvcResult.getResponse();
+            int status = response.getStatus();
+            Assertions.assertEquals(200,status);
+
+        }
+
+          @Test
+          public void getUserByIdTest() throws Exception
+          {
+          String userId = "abc12345678";
+              user1 = user.builder()
+                      .userName("abhishek srivastava")
+
+                      .Email("abhi@gmail.com")
+                      .about("this is testing")
+                      .gender("male")
+                      .imageName("abhi.jpeg")
+                      .Password("1234567")
+                      .build();
+           UserDto userDto = mapper.map(user1,UserDto.class);
+          Mockito.when(userService.getUserById(Mockito.anyString())).thenReturn(userDto);
+
+              MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.get("/users/"+userId); // use to create request
+              ResultActions perform =  mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
+              MvcResult mvcResult = perform.andReturn();
+              MockHttpServletResponse response = mvcResult.getResponse();
+              int status = response.getStatus();
+              Assertions.assertEquals(200,status);
+
+
+          }
 
     private String convertObjectToJsonString(Object user1) {
 
