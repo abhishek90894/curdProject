@@ -8,7 +8,11 @@ public class CurdProjectApplication {
 
 	public static void main(String[] args)
 	{
+
 		SpringApplication.run(CurdProjectApplication.class, args);
+		System.out.println(System.getProperty("java.class.path"));
+
 	}
+
 
 }
