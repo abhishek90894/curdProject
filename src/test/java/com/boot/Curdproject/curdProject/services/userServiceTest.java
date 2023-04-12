@@ -4,13 +4,11 @@ import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.entities.user;
 import com.boot.Curdproject.curdProject.exception.ResourceNotFoundException;
 import com.boot.Curdproject.curdProject.repository.userRepository;
-import com.boot.Curdproject.curdProject.service.impl.userImpl;
 import com.boot.Curdproject.curdProject.service.userService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,10 +147,10 @@ public class userServiceTest {
         verify(userRepository, times(1)).delete(user1);
 
     }
+
     @Test
-    public void deleteUserTest_userNotFound()
-    {
-      String  userId = "abhc";
+    public void deleteUserTest_userNotFound() {
+        String userId = "abhc";
         when(userRepository.findById(anyString())).thenReturn(Optional.empty());
 
         Assertions.assertThrows(RuntimeException.class, () -> userService.deleteUser(userId));
@@ -218,7 +216,6 @@ public class userServiceTest {
             Assertions.assertEquals("user not found", e.getMessage());
         }
     }
-
 
 
 //    @Test

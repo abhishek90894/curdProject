@@ -148,6 +148,7 @@
 						<exclude>**/com/boot/Curdproject/curdProject/validate/**</exclude>
 						<exclude>*/com/boot/Curdproject/curdProject/config/**</exclude>
 						<exclude>*/com/boot/Curdproject/curdProject/dtos/**</exclude>
+						<exclude>*/com/boot/Curdproject/curdProject/dtos/ApiResponseMessage</exclude>
 
 					</excludes>
 				</configuration>
