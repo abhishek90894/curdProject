@@ -146,9 +146,9 @@
 						<exclude>**/com/boot/Curdproject/curdProject/entities/**</exclude>
 						<exclude>**/com/boot/Curdproject/curdProject/exception/**</exclude>
 						<exclude>**/com/boot/Curdproject/curdProject/validate/**</exclude>
-						<exclude>*/com/boot/Curdproject/curdProject/config/**</exclude>
-						<exclude>*/com/boot/Curdproject/curdProject/dtos/**</exclude>
-						<exclude>*/com/boot/Curdproject/curdProject/dtos/ApiResponseMessage</exclude>
+						<exclude>**/com/boot/Curdproject/curdProject/config/**</exclude>
+						<exclude>**/com/boot/Curdproject/curdProject/dtos/**</exclude>
+
 
 					</excludes>
 				</configuration>
