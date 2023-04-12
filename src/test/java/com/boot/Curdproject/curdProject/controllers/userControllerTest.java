@@ -4,28 +4,30 @@ import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.entities.user;
 import com.boot.Curdproject.curdProject.service.userService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.catalina.User;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -35,16 +37,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class userControllerTest {
 
-     private user user1;
+    private user user1;
     @Autowired
     private ModelMapper mapper;
     @MockBean
     private userService userService;
     @Autowired
     private MockMvc mockMvc;
+
     @BeforeEach
-    public void init()
-    {
+    public void init() {
+
+
         user1 = user.builder()
                 .userName("abhishek srivastava")
 
@@ -58,6 +62,7 @@ public class userControllerTest {
 
     // create user
     @Test
+    @DisplayName("user test case")
     public void createUserTest() throws Exception {
         //   /users  +POST + send user data as a json
         //  data as a json and status we get is created
@@ -81,39 +86,74 @@ public class userControllerTest {
                 .content(convertObjectToJsonString(user1));
 
         ResultActions perform = mockMvc.perform(requestBuilder);
-        MvcResult  andReturn = perform.andReturn();
+        MvcResult andReturn = perform.andReturn();
         MockHttpServletResponse response = andReturn.getResponse();
         int status = response.getStatus();
-        Assertions.assertEquals(201,status);
+        Assertions.assertEquals(201, status);
 
     }
-      @Test
-      public void updateUserTest() throws Exception
-      {
+    @Test
+     public void createUserTest2()
+     {
+         // Create a WireMock server
+         WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(8080));
+         // Start the server
+         wireMockServer.start();
 
-         //  /users/{userid} + put request + json
-          String userId = "123";
-          UserDto userDto  = mapper.map(user1, UserDto.class);
-          when(userService.updateUser(Mockito.any(),Mockito.anyString())).thenReturn(userDto);
+         // Set up the stub
+         stubFor(post(urlEqualTo("/users"))
+                 .withRequestBody(equalToJson("{\"userName\":\"abhishek\",\"gender\":\"male\",\"Email\":\"abhishek@gmail.com\"}"))
+                 .willReturn(aResponse()
+                         .withStatus(HttpStatus.CREATED.value())
+                         .withHeader("Content-Type", "application/json")
+                         .withBody("{\"userName\":\"abhishek\",\"gender\":\"male\",\"Email\":\"abhishek@gmail.com\"}")));
 
-          this.mockMvc.perform(MockMvcRequestBuilders.put("/users/"+userId)
-                  .contentType(MediaType.APPLICATION_JSON)
-                  .content(convertObjectToJsonString(user1))
-                  .accept(MediaType.APPLICATION_JSON))
-                  .andDo(print())
-                  .andExpect(status().isOk())
-                  .andExpect(jsonPath("$.userName").exists());
+         // Make a request to the stub
+         UserDto userDto = new UserDto();
+         userDto.setUserName("John");
+         userDto.setGender("male");
+         userDto.setEmail("abhishek@gmail.com");
 
-      }
-        @Test
-        public void getAllUsersTest() throws Exception
-        {
-          UserDto  userDto1 = UserDto.builder().userName("abhishek srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
-            UserDto  userDto2 = UserDto.builder().userName("abhinav srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
+         RestTemplate restTemplate = new RestTemplate();
 
-            List<UserDto> userDtos  = List.of(userDto1,userDto2);
-            UserDto userDto = mapper.map(user1,UserDto.class);
-            when(userService.getAllUser()).thenReturn(userDtos);
+
+         ResponseEntity<UserDto> responseEntity = restTemplate.postForEntity("http://localhost:8080/users", userDto, UserDto.class);
+
+         // Assert the response
+         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+         assertEquals(userDto, responseEntity.getBody());
+
+// Stop the server
+         wireMockServer.stop();
+     }
+
+
+    @Test
+    public void updateUserTest() throws Exception {
+
+        //  /users/{userid} + put request + json
+        String userId = "123";
+        UserDto userDto = mapper.map(user1, UserDto.class);
+        when(userService.updateUser(Mockito.any(), Mockito.anyString())).thenReturn(userDto);
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/users/" + userId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(convertObjectToJsonString(user1))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.userName").exists());
+
+    }
+
+    @Test
+    public void getAllUsersTest() throws Exception {
+        UserDto userDto1 = UserDto.builder().userName("abhishek srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
+        UserDto userDto2 = UserDto.builder().userName("abhinav srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
+
+        List<UserDto> userDtos = List.of(userDto1, userDto2);
+        UserDto userDto = mapper.map(user1, UserDto.class);
+        when(userService.getAllUser()).thenReturn(userDtos);
 
 //            this.mockMvc.perform(MockMvcRequestBuilders.get("/users")
 //                            .contentType(MediaType.APPLICATION_JSON)
@@ -122,63 +162,60 @@ public class userControllerTest {
 //                    .andDo(print())
 //                    .andExpect(status().isOk());
 
-        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.get("/users"); // use to create request
-           ResultActions perform =  mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
-            MvcResult mvcResult = perform.andReturn();
-            MockHttpServletResponse response = mvcResult.getResponse();
-            int status = response.getStatus();
-            Assertions.assertEquals(200,status);
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder = MockMvcRequestBuilders.get("/users"); // use to create request
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assertions.assertEquals(200, status);
 
 
-        }
-        @Test
-        public void deleteUserTest() throws Exception
-        {
-            String userId = "abc12345678";
-            userService.deleteUser(userId);
+    }
 
-            MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.delete("/users/"+userId); // use to create request
-            ResultActions perform =  mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
-            MvcResult mvcResult = perform.andReturn();
-            MockHttpServletResponse response = mvcResult.getResponse();
-            int status = response.getStatus();
-            Assertions.assertEquals(200,status);
+    @Test
+    public void deleteUserTest() throws Exception {
+        String userId = "abc12345678";
+        userService.deleteUser(userId);
 
-        }
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder = MockMvcRequestBuilders.delete("/users/" + userId); // use to create request
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assertions.assertEquals(200, status);
 
-          @Test
-          public void getUserByIdTest() throws Exception
-          {
-          String userId = "abc12345678";
-              user1 = user.builder()
-                      .userName("abhishek srivastava")
+    }
 
-                      .Email("abhi@gmail.com")
-                      .about("this is testing")
-                      .gender("male")
-                      .imageName("abhi.jpeg")
-                      .Password("1234567")
-                      .build();
-           UserDto userDto = mapper.map(user1,UserDto.class);
-          Mockito.when(userService.getUserById(Mockito.anyString())).thenReturn(userDto);
+    @Test
+    public void getUserByIdTest() throws Exception {
+        String userId = "abc12345678";
+        user1 = user.builder()
+                .userName("abhishek srivastava")
 
-              MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.get("/users/"+userId); // use to create request
-              ResultActions perform =  mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
-              MvcResult mvcResult = perform.andReturn();
-              MockHttpServletResponse response = mvcResult.getResponse();
-              int status = response.getStatus();
-              Assertions.assertEquals(200,status);
+                .Email("abhi@gmail.com")
+                .about("this is testing")
+                .gender("male")
+                .imageName("abhi.jpeg")
+                .Password("1234567")
+                .build();
+        UserDto userDto = mapper.map(user1, UserDto.class);
+        Mockito.when(userService.getUserById(Mockito.anyString())).thenReturn(userDto);
+
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder = MockMvcRequestBuilders.get("/users/" + userId); // use to create request
+        ResultActions perform = mockMvc.perform(mockHttpServletRequestBuilder); // use to send the request
+        MvcResult mvcResult = perform.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        Assertions.assertEquals(200, status);
 
 
-          }
+    }
 
     private String convertObjectToJsonString(Object user1) {
 
-        try
-        {
+        try {
             return new ObjectMapper().writeValueAsString(user1);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             return null;
         }
     }
