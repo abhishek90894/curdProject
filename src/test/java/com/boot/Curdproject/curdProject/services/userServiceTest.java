@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
 //@ExtendWith(SpringExtension.class)
 @Slf4j
 @SpringBootTest
-public class userServiceTest {
+ class userServiceTest {
 
     // create user
 
@@ -42,7 +42,7 @@ public class userServiceTest {
     user user1;
 
     @BeforeEach
-    public void init() {
+     void init() {
         user1 = user.builder()
                 .userName("abhishek srivastava")
 
@@ -55,7 +55,7 @@ public class userServiceTest {
     }
 
     @Test
-    public void createUserTest() {
+     void createUserTest() {
         when(userRepository.save(Mockito.any())).thenReturn(user1);
 
         UserDto userDto = userService.createUser(mapper.map(user1, UserDto.class));
@@ -69,7 +69,7 @@ public class userServiceTest {
     }
 
     @Test
-    public void updateUserTest() {
+     void updateUserTest() {
         String userId = "12dse45";
         UserDto userDto = UserDto.builder()
                 .userName("abhishek srivastava")
@@ -140,7 +140,7 @@ public class userServiceTest {
 
     // delete user test case
     @Test
-    public void deleteUserTest() {
+     void deleteUserTest() {
         String userId = "abc123";
         when(userRepository.findById("abc123")).thenReturn(Optional.of(user1));
         userService.deleteUser(userId);
@@ -149,7 +149,7 @@ public class userServiceTest {
     }
 
     @Test
-    public void deleteUserTest_userNotFound() {
+     void deleteUserTest_userNotFound() {
         String userId = "abhc";
         when(userRepository.findById(anyString())).thenReturn(Optional.empty());
 
@@ -160,7 +160,7 @@ public class userServiceTest {
     }
 
     @Test
-    public void getAllUsersTest() {
+     void getAllUsersTest() {
         user user2 = user.builder()
                 .userName("ankur srivastava")
 
@@ -191,7 +191,7 @@ public class userServiceTest {
     }
 
     @Test
-    public void getUserByIdTest01() {
+     void getUserByIdTest01() {
 
         String userid = "abc123";
         when(userRepository.findById("abc123")).thenReturn(Optional.of(user1));
@@ -203,7 +203,7 @@ public class userServiceTest {
 
 
     @Test
-    public void testGetUserById_UserNotFound() {
+     void testGetUserById_UserNotFound() {
         // Arrange
         when(userRepository.findById(anyString())).thenReturn(Optional.empty());
 
