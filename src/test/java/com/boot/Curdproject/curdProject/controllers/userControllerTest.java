@@ -6,10 +6,7 @@ import com.boot.Curdproject.curdProject.service.userService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +27,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -55,9 +53,10 @@ public class userControllerTest {
     @BeforeEach
     public void init() {
 
-          wireMockServer = new WireMockServer();
-            WireMock.configureFor("localhost",6789);
-            wireMockServer.start();
+//        wireMockServer = new WireMockServer();
+//            WireMock.configureFor("localhost",8080);
+//           wireMockServer.start();
+
 
         user1 = user.builder()
                 .userName("abhishek srivastava")
@@ -72,7 +71,7 @@ public class userControllerTest {
     @AfterEach
     public void tearUp()
     {
-        wireMockServer.stop();;
+//        wireMockServer.stop();
     }
 
     // create user
@@ -251,11 +250,12 @@ public class userControllerTest {
                         .withBody(convertObjectToJsonString(userDto))));
 
         // When
-        ResponseEntity<UserDto> response = restTemplate.getForEntity("/users/" + userId, UserDto.class);
+        ResponseEntity<UserDto> response = restTemplate.getForEntity("http://localhost:8080/users/" + userId, UserDto.class);
 
         // Then
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(userDto, response.getBody());
+        assertEquals(userDto.toString(), response.getBody().toString());
+
     }
 
 
