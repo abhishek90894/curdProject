@@ -53,10 +53,9 @@ public class userControllerTest {
     @BeforeEach
     public void init() {
 
-//        wireMockServer = new WireMockServer();
-//            WireMock.configureFor("localhost",8080);
-//           wireMockServer.start();
-
+        wireMockServer = new WireMockServer();
+            WireMock.configureFor("localhost",8090);
+           wireMockServer.start();
 
         user1 = user.builder()
                 .userName("abhishek srivastava")
@@ -71,7 +70,7 @@ public class userControllerTest {
     @AfterEach
     public void tearUp()
     {
-//        wireMockServer.stop();
+       wireMockServer.stop();
     }
 
     // create user
