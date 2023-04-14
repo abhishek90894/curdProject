@@ -54,7 +54,7 @@ public class userControllerTest {
     public void init() {
 
         wireMockServer = new WireMockServer();
-            WireMock.configureFor("localhost",8090);
+            WireMock.configureFor("localhost",8080);
            wireMockServer.start();
 
         user1 = user.builder()
