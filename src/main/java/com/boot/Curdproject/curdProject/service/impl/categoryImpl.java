@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +23,10 @@ public class categoryImpl implements categoryService {
 
     @Override
     public CategoryDto create(CategoryDto categoryDto) {
+
+        // randomally created category id
+        String categoryId1 = UUID.randomUUID().toString();
+        categoryDto.setCategoryId(categoryId1);
         Category category = mapper.map(categoryDto, Category.class);
         Category saveCategory = categoryRepository.save(category);
         return mapper.map(saveCategory, CategoryDto.class);
@@ -29,6 +34,8 @@ public class categoryImpl implements categoryService {
 
     @Override
     public CategoryDto update(CategoryDto categoryDto, String categoryId) {
+
+
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("category not found"));
         category.setDescription(categoryDto.getDescription());
         category.setTitle(categoryDto.getTitle());

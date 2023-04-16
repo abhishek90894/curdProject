@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @AllArgsConstructor
@@ -16,11 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 public class Category {
     @Id
-     @Column(name ="categoryId")
+    @Column(name = "categoryId")
     private String categoryId;
-     @Column(name ="title",length = 100,nullable = false)
+
     private String title;
-     @Column(name ="description",length =200)
+
     private String description;
     private String coverImage;
 
