@@ -14,16 +14,15 @@ import lombok.*;
 public class UserDto {
 
 
-
     private String userId;
-   @Size(min = 3,max = 100 , message = "Invalid name")
+    @Size(min = 3, max = 100, message = "Invalid name")
     private String userName;
     @Email(message = "Invalid email")
 // @Pattern(regexp = "\\A[A-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Z0-9.-]+\\Z",message = "Invalid user Email !!")
     private String Email;
     @NotBlank(message = "password is required")
     private String Password;
-    @Size(min =4,max=9)
+    @Size(min = 4, max = 9)
     private String gender;
     @NotBlank(message = "about is required")
     private String about;
