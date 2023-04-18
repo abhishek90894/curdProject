@@ -24,7 +24,7 @@ import static org.mockito.Mockito.*;
 
 @Slf4j
 @SpringBootTest
-public class categoryServiceTest {
+ class categoryServiceTest {
 
     private  Category category;
     @Autowired

@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class userControllerTest {
+ class userControllerTest {
 
     private user user1;
     @Autowired
@@ -45,7 +45,7 @@ public class userControllerTest {
 
 
     @BeforeEach
-    public void init() {
+     void init() {
 
 //        wireMockServer = new WireMockServer();
 //            WireMock.configureFor("localhost",8080);
@@ -70,7 +70,7 @@ public class userControllerTest {
     // create user
     @Test
     @DisplayName("user test case")
-    public void createUserTest() throws Exception {
+     void createUserTest() throws Exception {
         //   /users  +POST + send user data as a json
         //  data as a json and status we get is created
         UserDto userDto = mapper.map(user1, UserDto.class);
@@ -137,7 +137,7 @@ public class userControllerTest {
 //
 //
     @Test
-    public void updateUserTest() throws Exception {
+     void updateUserTest() throws Exception {
 
         //  /users/{userid} + put request + json
         String userId = "123";
@@ -155,7 +155,7 @@ public class userControllerTest {
     }
 
     @Test
-    public void getAllUsersTest() throws Exception {
+     void getAllUsersTest() throws Exception {
         UserDto userDto1 = UserDto.builder().userName("abhishek srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
         UserDto userDto2 = UserDto.builder().userName("abhinav srivastava").Email("abhi@gmail.com").about("this is testing").gender("male").imageName("abhi.jpeg").Password("1234567").build();
 
@@ -181,7 +181,7 @@ public class userControllerTest {
     }
 
     @Test
-    public void deleteUserTest() throws Exception {
+     void deleteUserTest() throws Exception {
         String userId = "abc12345678";
         userService.deleteUser(userId);
 
@@ -195,7 +195,7 @@ public class userControllerTest {
     }
 
     @Test
-    public void getUserByIdTest() throws Exception {
+     void getUserByIdTest() throws Exception {
         String userId = "abc12345678";
         user1 = user.builder()
                 .userName("abhishek srivastava")
