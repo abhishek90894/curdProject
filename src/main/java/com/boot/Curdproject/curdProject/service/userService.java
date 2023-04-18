@@ -1,7 +1,6 @@
 package com.boot.Curdproject.curdProject.service;
 
 import com.boot.Curdproject.curdProject.dtos.UserDto;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
