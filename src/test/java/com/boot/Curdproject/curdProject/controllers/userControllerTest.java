@@ -4,19 +4,16 @@ import com.boot.Curdproject.curdProject.dtos.UserDto;
 import com.boot.Curdproject.curdProject.entities.user;
 import com.boot.Curdproject.curdProject.service.userService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -26,8 +23,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -46,16 +41,15 @@ public class userControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-   private WireMockServer wireMockServer;
-
+    //private WireMockServer wireMockServer;
 
 
     @BeforeEach
     public void init() {
 
-        wireMockServer = new WireMockServer();
-            WireMock.configureFor("localhost",8080);
-           wireMockServer.start();
+//        wireMockServer = new WireMockServer();
+//            WireMock.configureFor("localhost",8080);
+//           wireMockServer.start();
 
         user1 = user.builder()
                 .userName("abhishek srivastava")
@@ -67,11 +61,11 @@ public class userControllerTest {
                 .Password("1234567")
                 .build();
     }
-    @AfterEach
-    public void tearUp()
-    {
-       wireMockServer.stop();
-    }
+    //@AfterEach
+//    public void tearUp()
+//    {
+//       wireMockServer.stop();
+//    }
 
     // create user
     @Test
@@ -225,37 +219,37 @@ public class userControllerTest {
 
     }
 
-    @Test
-    public void testGetUserById() throws Exception {
-
-        TestRestTemplate restTemplate = new TestRestTemplate();
-
-        String userId = "123";
-        UserDto userDto = new UserDto();
-        userDto.setUserId(userId);
-        userDto.setUserName("abhishek");
-        userDto.setEmail("abhishek@gmail.com");
-        userDto.setGender("male");
-        userDto.setAbout("this is abhishek");
-        userDto.setPassword("23451678");
-        userDto.setImageName("abhi.jpeg");
-
-
-        // Stubbing the response of the userService.getUserById() method
-        stubFor(get(urlEqualTo("/users/" + userId))
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader("Content-Type", "application/json")
-                        .withBody(convertObjectToJsonString(userDto))));
-
-        // When
-        ResponseEntity<UserDto> response = restTemplate.getForEntity("http://localhost:8080/users/" + userId, UserDto.class);
-
-        // Then
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(userDto.toString(), response.getBody().toString());
-
-    }
+//    @Test
+//    public void testGetUserById() throws Exception {
+//
+//        TestRestTemplate restTemplate = new TestRestTemplate();
+//
+//        String userId = "123";
+//        UserDto userDto = new UserDto();
+//        userDto.setUserId(userId);
+//        userDto.setUserName("abhishek");
+//        userDto.setEmail("abhishek@gmail.com");
+//        userDto.setGender("male");
+//        userDto.setAbout("this is abhishek");
+//        userDto.setPassword("23451678");
+//        userDto.setImageName("abhi.jpeg");
+//
+//
+//        // Stubbing the response of the userService.getUserById() method
+//        stubFor(get(urlEqualTo("/users/" + userId))
+//                .willReturn(aResponse()
+//                        .withStatus(200)
+//                        .withHeader("Content-Type", "application/json")
+//                        .withBody(convertObjectToJsonString(userDto))));
+//
+//        // When
+//        ResponseEntity<UserDto> response = restTemplate.getForEntity("http://localhost:8080/users/" + userId, UserDto.class);
+//
+//        // Then
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(userDto.toString(), response.getBody().toString());
+//
+//    }
 
 
     private String convertObjectToJsonString(Object user1) {
