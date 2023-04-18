@@ -116,11 +116,7 @@
 			<artifactId>AMSApiClient</artifactId>
 			<version>0.5.9</version>
 		</dependency>
-		<dependency>
-			<groupId>com.youcruit.ams.api.client</groupId>
-			<artifactId>AMSApiClient</artifactId>
-			<version>0.5.9</version>
-		</dependency>
+
 	</dependencies>
 
 
