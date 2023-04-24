@@ -6,6 +6,7 @@ import com.boot.Curdproject.curdProject.service.userService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
@@ -14,26 +15,28 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Slf4j
 @SpringBootTest
 @AutoConfigureMockMvc
 public class userControllerTest {
@@ -45,6 +48,8 @@ public class userControllerTest {
     private userService userService;
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private RestTemplate restTemplate;
 
    private WireMockServer wireMockServer;
 
@@ -105,6 +110,107 @@ public class userControllerTest {
         assertEquals(201, status);
 
     }
+    // test case to create user succesfully
+    @Test
+    public void createUserSuccess() throws Exception {
+        UserDto userDto =  UserDto.builder()
+                .userName("abhishek srivastava")
+
+                .Email("abhi@gmail.com")
+                .about("this is testing")
+                .gender("male")
+                .imageName("abhi.jpeg")
+                .Password("1234567")
+                .build();
+
+        // Configure WireMock to return a success response
+        stubFor(post(urlEqualTo("/users"))
+                .withRequestBody(equalToJson(convertObjectToJsonString(userDto)))
+                .willReturn(aResponse()
+                        .withStatus(HttpStatus.CREATED.value())
+                        .withHeader("Content-Type", "application/json")
+                        .withBody(convertObjectToJsonString(userDto))));
+
+        ResponseEntity<UserDto> responseEntity = restTemplate.postForEntity("http://localhost:8080/users", userDto, UserDto.class);
+
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
+        assertEquals(userDto.toString(), responseEntity.getBody().toString());
+    }
+
+
+
+//to create user with invalid request body
+
+    @Test
+    public void createUserInvalidRequestBody() throws Exception {
+        UserDto userDto =  UserDto.builder()
+                .userName("abhishek srivastava")
+
+                .Email("abhi@gmail.com")
+                .about("this is testing")
+                .gender("male")
+                .imageName("abhi.jpeg")
+                .Password("1234567")
+                .build();
+
+        // Configure WireMock to return a bad request response
+        stubFor(post(urlEqualTo("/users"))
+                .withRequestBody(equalToJson(convertObjectToJsonString(userDto)))
+                .willReturn(aResponse()
+                        .withStatus(HttpStatus.BAD_REQUEST.value())));
+
+        try{
+
+        ResponseEntity<UserDto> responseEntity = restTemplate.postForEntity("http://localhost:8080/users", userDto, UserDto.class);
+
+//        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+//        assertNull(responseEntity.getBody());
+            //ResponseEntity<UserDto> responseEntity = restTemplate.postForEntity("/users", userDto, UserDto.class);
+        } catch (HttpClientErrorException ex) {
+            assertEquals(HttpStatus.BAD_REQUEST, ex.getStatusCode());
+            assertNotNull(ex.getResponseBodyAsString());
+            // log or print the response body for debugging purposes
+           log.info ("Error message: {}" ,ex.getResponseBodyAsString());
+        }
+
+    }
+
+    //test cases to handle internal server error
+
+    @Test
+    public void createUserInternalServerError() throws Exception {
+        UserDto userDto =  UserDto.builder()
+                .userName("abhishek srivastava")
+
+                .Email("abhi@gmail.com")
+                .about("this is testing")
+                .gender("male")
+                .imageName("abhi.jpeg")
+                .Password("1234567")
+                .build();
+
+        // Configure WireMock to return a server error response
+        stubFor(post(urlEqualTo("/users"))
+                .withRequestBody(equalToJson(convertObjectToJsonString(userDto)))
+                .willReturn(aResponse()
+                        .withStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())));
+
+        try{
+
+            ResponseEntity<UserDto> responseEntity = restTemplate.postForEntity("http://localhost:8080/users", userDto, UserDto.class);
+
+//        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+//        assertNull(responseEntity.getBody());
+            //ResponseEntity<UserDto> responseEntity = restTemplate.postForEntity("/users", userDto, UserDto.class);
+        } catch (HttpServerErrorException ex) {
+            assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, ex.getStatusCode());
+            assertNotNull(ex.getResponseBodyAsString());
+            // log or print the response body for debugging purposes
+            log.info("Error message {}",ex.getMessage().toString());
+        }
+
+    }
 
     //    @Test
 //     public void createUserTest2()
@@ -159,6 +265,8 @@ public class userControllerTest {
                 .andExpect(jsonPath("$.userName").exists());
 
     }
+
+
 
     @Test
     public void getAllUsersTest() throws Exception {
