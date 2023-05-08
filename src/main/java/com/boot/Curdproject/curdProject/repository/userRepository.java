@@ -4,6 +4,9 @@ import com.boot.Curdproject.curdProject.entities.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+
 @Component
 public interface userRepository extends JpaRepository<user,String> {
 //      user findByuserEmail(String email);

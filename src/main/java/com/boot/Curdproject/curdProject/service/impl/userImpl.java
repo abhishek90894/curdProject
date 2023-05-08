@@ -7,6 +7,7 @@ import com.boot.Curdproject.curdProject.repository.userRepository;
 import com.boot.Curdproject.curdProject.service.userService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,11 +21,15 @@ public class userImpl  implements userService {
     private  userRepository userRepository;
     @Autowired
     private ModelMapper mapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto createUser(UserDto userDto) {
         String userId = UUID.randomUUID().toString();
          userDto.setUserId(userId);
+         //set encoded password
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         user user = dtoToEntity(userDto);
         user saveUser = userRepository.save(user);
