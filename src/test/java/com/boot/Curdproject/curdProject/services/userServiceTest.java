@@ -60,8 +60,10 @@ public class userServiceTest {
 
         UserDto userDto = userService.createUser(mapper.map(user1, UserDto.class));
 
+
         log.info("user name {}", userDto.getUserName());
         Assertions.assertNotNull(userDto);
+        Assertions.assertEquals(userDto.getUserName(),user1.getUserName());
 
         // Assertions.assertEquals("abhishek srivastava",userDto.getUserName());
 
