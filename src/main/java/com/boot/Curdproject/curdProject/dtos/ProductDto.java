@@ -17,7 +17,7 @@ import java.util.Date;
 public class ProductDto {
 
     private String productId;
-    @NotBlank(message = "title should be there")
+
     private String title;
     @Column(length = 1000)
     private String description;

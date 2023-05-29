@@ -61,7 +61,7 @@ public class productServiceImpl implements productService {
     @Override
     public ProductDto getProductById(String productId) {
 
-        Product product = productRepository.findById(productId).orElseThrow(()->new ResourceNotFoundException());
+        Product product = productRepository.findById(productId).orElseThrow(()->new ResourceNotFoundException("product not found"));
 
         return mapper.map(product, ProductDto.class);
     }
