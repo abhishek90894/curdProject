@@ -7,8 +7,13 @@ import com.boot.Curdproject.curdProject.repository.userRepository;
 import com.boot.Curdproject.curdProject.service.userService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -20,6 +25,9 @@ public class userImpl  implements userService {
     private  userRepository userRepository;
     @Autowired
     private ModelMapper mapper;
+
+    @Value("${user.profile.image.path}")
+    private String path;
 
     @Override
     public UserDto createUser(UserDto userDto) {
@@ -54,7 +62,17 @@ public class userImpl  implements userService {
     public void deleteUser(String userId)
     {
         user user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("user not found"));
-      userRepository.delete(user);
+
+        String fullPath = path+user.getImageName();
+        try
+        {
+            Path path1 = Paths.get(fullPath);
+            Files.delete(path1);
+        }catch (Exception e)
+        {
+          throw new RuntimeException(e.getMessage());
+        }
+        userRepository.delete(user);
     }
 
     @Override

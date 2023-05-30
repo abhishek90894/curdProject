@@ -82,4 +82,9 @@ public class productController {
         List<ProductDto> productDtos = productService.searchByTitle(title);
         return  new ResponseEntity<>(productDtos,HttpStatus.OK);
     }
+
+    //upload image
+
+
+    //serve image
 }
