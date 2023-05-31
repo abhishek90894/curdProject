@@ -7,11 +7,9 @@ import com.boot.Curdproject.curdProject.repository.userRepository;
 import com.boot.Curdproject.curdProject.service.userService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -19,58 +17,51 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
-public class userImpl  implements userService {
+public class userImpl implements userService {
 
     @Autowired
-    private  userRepository userRepository;
+    private userRepository userRepository;
     @Autowired
     private ModelMapper mapper;
 
-    @Value("${user.profile.image.path}")
-    private String path;
 
     @Override
     public UserDto createUser(UserDto userDto) {
         String userId = UUID.randomUUID().toString();
-         userDto.setUserId(userId);
+        userDto.setUserId(userId);
 
         user user = dtoToEntity(userDto);
         user saveUser = userRepository.save(user);
-         UserDto newDto = entityToDto(saveUser);
+        UserDto newDto = entityToDto(saveUser);
         return newDto;
     }
 
 
-
-
     @Override
     public UserDto updateUser(UserDto userDto, String userId) {
-        user user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("user Not found"));
-             user.setUserName(userDto.getUserName());
-             user.setPassword(userDto.getPassword());
-             user.setAbout(userDto.getAbout());
-             user.setImageName(userDto.getImageName());
-             user.setGender(userDto.getGender());
-             user.setEmail(userDto.getEmail());
-             user updateUser = userRepository.save(user);
-             UserDto updatedDto = entityToDto(updateUser);
+        user user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("user Not found"));
+        user.setUserName(userDto.getUserName());
+        user.setPassword(userDto.getPassword());
+        user.setAbout(userDto.getAbout());
+        user.setImageName(userDto.getImageName());
+        user.setGender(userDto.getGender());
+        user.setEmail(userDto.getEmail());
+        user updateUser = userRepository.save(user);
+        UserDto updatedDto = entityToDto(updateUser);
 
         return updatedDto;
     }
 
     @Override
-    public void deleteUser(String userId)
-    {
-        user user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("user not found"));
+    public void deleteUser(String userId) {
+        user user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("user not found"));
 
-        String fullPath = path+user.getImageName();
-        try
-        {
+        String fullPath = path + user.getImageName();
+        try {
             Path path1 = Paths.get(fullPath);
             Files.delete(path1);
-        }catch (Exception e)
-        {
-          throw new RuntimeException(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
         userRepository.delete(user);
     }
@@ -78,14 +69,14 @@ public class userImpl  implements userService {
     @Override
     public List<UserDto> getAllUser() {
         List<user> users = userRepository.findAll();
-      List<UserDto> dtolist =   users.stream().map(user ->entityToDto(user)).collect(Collectors.toList());
+        List<UserDto> dtolist = users.stream().map(user -> entityToDto(user)).collect(Collectors.toList());
         return dtolist;
     }
 
     @Override
     public UserDto getUserById(String userid) {
-          user user   =   userRepository.findById(userid).orElseThrow(()->new ResourceNotFoundException("user not found"));
-         return  entityToDto(user);
+        user user = userRepository.findById(userid).orElseThrow(() -> new ResourceNotFoundException("user not found"));
+        return entityToDto(user);
 
     }
 
@@ -112,9 +103,10 @@ public class userImpl  implements userService {
 //            .imageName(userDto.getImageName())
 //            .gender(userDto.getGender()).build();
 
-        return mapper.map(userDto,user.class);
+        return mapper.map(userDto, user.class);
 
     }
+
     private UserDto entityToDto(user saveUser) {
 //      UserDto userDto = UserDto.builder()
 //              .userId(saveUser.getUserId())
@@ -125,6 +117,6 @@ public class userImpl  implements userService {
 //              .imageName(saveUser.getImageName())
 //              .build();
 
-        return mapper.map(saveUser,UserDto.class);
+        return mapper.map(saveUser, UserDto.class);
     }
 }
