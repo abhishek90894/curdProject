@@ -12,9 +12,14 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +43,9 @@ import static org.mockito.Mockito.*;
 
     @Autowired
     private ModelMapper mapper;
+
+    @Value("${user.profile.image.path}")
+    private String path;
 
     user user1;
 
@@ -140,9 +148,12 @@ import static org.mockito.Mockito.*;
 
     // delete user test case
     @Test
-     void deleteUserTest() {
+     void deleteUserTest() throws IOException {
         String userId = "abc123";
+
+
         when(userRepository.findById("abc123")).thenReturn(Optional.of(user1));
+
         userService.deleteUser(userId);
         verify(userRepository, times(1)).delete(user1);
 
